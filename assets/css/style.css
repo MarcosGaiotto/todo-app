@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans';
+}
+
+body {
+    height: 100vh;
+    background: hsl(235, 21%, 11%);
+}
+
+
+
+.header-container {
+    background: url(../images/bg-mobile-dark.jpg) no-repeat;
+    background-size: cover;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.header-container h1 {
+    color: hsl(0, 0%, 98%);
+    letter-spacing: 10px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    
+}
+
+.sun {
+    background: url(../images/icon-sun.svg) no-repeat center;
+}
