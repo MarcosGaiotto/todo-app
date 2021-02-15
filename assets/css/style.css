@@ -6,20 +6,17 @@
 }
 
 body {
-    height: 100vh;
     background: hsl(235, 21%, 11%);
 }
-
-
 
 .header-container {
     background: url(../images/bg-mobile-dark.jpg) no-repeat;
     background-size: cover;
-    height: 30%;
+    height: 260px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    padding: 40px;
+    padding: 60px 40px;
 }
 
 .header-container h1 {
@@ -36,3 +33,130 @@ body {
 .sun {
     background: url(../images/icon-sun.svg) no-repeat center;
 }
+
+.container {
+    height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content:center;
+    position: relative;
+}
+
+.new-todo-container {
+    width: 100%;
+    height: 60px;
+    background: hsl(235, 24%, 19%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    position: absolute;
+    top: -120px;
+}
+
+#new-todo {
+    background: hsl(235, 24%, 19%);
+    border: none;
+    outline: none;
+    color: hsl(234, 39%, 85%);
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+
+.circle-icon {
+    background-color: transparent;
+    outline: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid hsl(237, 14%, 26%);
+    margin-right: 10px;
+}
+
+
+.todo-list-container {
+    width: 100%;
+    position: absolute;
+    top: -30px;
+}
+
+.todo-item-container {
+    width: 100%;
+    height: 60px;
+    background: hsl(235, 24%, 19%);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-bottom: 1px solid hsl(234, 11%, 52%);
+}
+
+.todo-item-container:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.todo-item-container:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
+}
+
+.checkmark-container {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+}
+
+.checkmark-container input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: -3px;
+}
+
+
+.checkmark-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkmark-container input:checked ~ .checkmark {
+    background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 10px;
+    top: 7px;
+    width: 3px;
+    height: 6px;
+    border: solid hsl(0, 0%, 98%);;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkmark-container input:checked ~ .checkmark:after {
+    display: block;
+    text-decoration: line-through;
+}
+
+
+.todo-item-container p {
+    color: hsl(234, 39%, 85%);
+    font-size: 1em;
+}
+
+  
+
