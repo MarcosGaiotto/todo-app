@@ -36,23 +36,24 @@ body {
 
 .container {
     height: 100vh;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content:center;
-    position: relative;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 140px;
 }
 
 .new-todo-container {
-    width: 100%;
+    width: 80%;
     height: 60px;
     background: hsl(235, 24%, 19%);
     border-radius: 10px;
     display: flex;
     align-items: center;
     padding-left: 20px;
-    position: absolute;
-    top: -120px;
+  
 }
 
 #new-todo {
@@ -77,20 +78,23 @@ body {
 
 
 .todo-list-container {
-    width: 100%;
-    position: absolute;
-    top: -30px;
+    width: 80%;
+    margin-top: 25px;
 }
 
-.todo-item-container {
-    width: 100%;
+.todo-item-container, .todo-list-footer-container, .filter-container {
     height: 60px;
     background: hsl(235, 24%, 19%);
     display: flex;
     align-items: center;
+}
+
+.todo-item-container {
+    width: 100%;
     padding-left: 20px;
     border-bottom: 1px solid hsl(234, 11%, 52%);
 }
+
 
 .todo-item-container:first-child {
     border-top-left-radius: 10px;
@@ -98,11 +102,7 @@ body {
 
 }
 
-.todo-item-container:last-child {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: none;
-}
+
 
 .checkmark-container {
     position: relative;
@@ -158,5 +158,53 @@ body {
     font-size: 1em;
 }
 
+.todo-list-footer-container {
+    width: 80%;
+    justify-content: space-between;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 25px;
+    color: hsl(234, 11%, 52%)
+}
+
+#clear:hover {
+    color: hsl(236, 33%, 92%)
+}
+
+.filter-container {
+    margin-top: 25px;
+    width: 80%;
+    border-radius: 10px;
+    color: hsl(234, 11%, 52%);
+    font-weight: bold;
+    justify-content: center;
+}
+
+.filter-container p {
+    margin-left: 20px;
+}
+
+.filter-container p:hover {
+    color: hsl(236, 33%, 92%);
+}
+
+.filter-select {
+    color: hsl(220, 98%, 61%);
+}
+
+.drag-drop-container {
+    margin-top: 60px;
+    color: hsl(233, 14%, 35%);
+    font-weight: bold;
+}
+
+.attribution {
+    margin-top: 60px;
+     font-size: 11px; text-align: center; 
+}
+
+.attribution a {
+     color: hsl(228, 45%, 44%);
+}
   
 
