@@ -16,8 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (newTodo.value != "") {
             list.push(newTodo.value);
             localStorage.setItem('storageList', JSON.stringify(list));
-            updateTodoList();
-            newTodo.value = "";
+            window.location.href = window.location.href
         }
     
     });
@@ -28,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (newTodo.value != "") {
                 list.push(newTodo.value);
                 localStorage.setItem('storageList', JSON.stringify(list));
-                updateTodoList();
-                newTodo.value = "";
+                window.location.href = window.location.href
             }
         }
     });
@@ -48,8 +46,9 @@ function updateTodoList() {
     list.forEach(function(item) {
         let lItem = createTodoItem(item);
         todoList.appendChild(lItem);
-        let input = lItem.firstChild.firstChild;
-        updateItensLeftList(input)
+        let lInput = lItem.firstChild.firstChild;
+        updateItensLeftList(lInput);
+
     });
 }
 
@@ -77,4 +76,26 @@ function createTodoItem(description) {
     listItem.appendChild(itemDescription);
 
     return listItem;
+}
+
+function updateItensLeftList(input) {
+    let itensLeft = document.getElementById('itens-left');
+    if (input.checked) {
+        if (itensLeft.innerHTML != 0){
+            itensLeft.innerHTML = parseInt(itensLeft.innerHTML) -1;
+        }
+    } else {
+        itensLeft.innerHTML = parseInt(itensLeft.innerHTML) +1;
+    }
+}
+
+function checkItem(input) {
+    let description = input.parentNode.parentNode.lastChild;
+            
+    if (input.checked) {
+        description.style.textDecoration = "line-through";
+       
+    } else {
+        description.style.textDecoration = "none";
+    }
 }

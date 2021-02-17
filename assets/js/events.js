@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+
     let inputs = document.querySelectorAll(".checkmark-input");
     inputs.forEach( (input) => {
         input.addEventListener("click", () => {
+            console.log("foi");
             checkItem(input);
             updateItensLeftList(input);
         });
@@ -10,38 +13,67 @@ document.addEventListener('DOMContentLoaded', () => {
     let clearCompleted = document.getElementById('clear-completed');
 
     clearCompleted.addEventListener('click', () => {
+        let inputs = document.querySelectorAll(".checkmark-input");
         inputs.forEach((input) => {
-            let description = input.parentNode.parentNode.lastChild.innerHTML;
+            let desc = input.parentNode.parentNode.lastChild.innerHTML;
             if(input.checked) {
-                console.log(description);
-                list.splice(list.indexOf(description),1);
+                list.splice(list.indexOf(desc),1);
                 localStorage.setItem('storageList', JSON.stringify(list));
                 updateTodoList();
             }
         });
     });
 
+    let allFilter = document.getElementById('filter-all');
+    let activeFilter = document.getElementById('filter-active');
+    let completedFilter = document.getElementById('filter-completed');
+
+    allFilter.addEventListener('click', () => {
+        let inputs = document.querySelectorAll(".checkmark-input");
+        inputs.forEach( (input) => {
+            let inputItem = input.parentNode.parentNode;
+            inputItem.style.display = "flex";
+            allFilter.className = "filter-select";
+            activeFilter.className = "";
+            completedFilter.className = "";
+        });
+    });
+
+    
+
+    activeFilter.addEventListener('click', () => {
+        let inputs = document.querySelectorAll(".checkmark-input");
+        inputs.forEach( (input) => {
+            let inputItem = input.parentNode.parentNode;
+            if (input.checked) {
+                inputItem.style.display = "none";
+            } else {
+                inputItem.style.display = "flex";
+            }
+            allFilter.className = "";
+            activeFilter.className = "filter-select";
+            completedFilter.className = "";
+        });
+    });
+
+    
+
+    completedFilter.addEventListener('click', () => {
+        let inputs = document.querySelectorAll(".checkmark-input");
+        inputs.forEach( (input) => {
+            let inputItem = input.parentNode.parentNode;
+            if (!input.checked) {
+                inputItem.style.display = "none";
+            } else {
+                inputItem.style.display = "flex";
+            }
+            allFilter.className = "";
+            activeFilter.className = "";
+            completedFilter.className = "filter-select";
+        });
+    });
+
 });
 
 
-function updateItensLeftList(input) {
-    let itensLeft = document.getElementById('itens-left');
-    if (input.checked) {
-        if (itensLeft.innerHTML != 0){
-            itensLeft.innerHTML = parseInt(itensLeft.innerHTML) -1;
-        }
-    } else {
-        itensLeft.innerHTML = parseInt(itensLeft.innerHTML) +1;
-    }
-}
 
-function checkItem(input) {
-    let description = input.parentNode.parentNode.lastChild;
-            
-    if (input.checked) {
-        description.style.textDecoration = "line-through";
-       
-    } else {
-        description.style.textDecoration = "none";
-    }
-}
