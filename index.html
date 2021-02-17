@@ -16,30 +16,16 @@
   </header>
   <div class="container">
     <div class="new-todo-container">
-      <button class="circle-icon"></button>
+      <button id="new-todo-btn" class="circle-icon"></button>
       <label for="new-todo"></label>
       <input type="text" id="new-todo" name="new-todo" placeholder="Create a new todo...">
     </div>
 
-    <ul class="todo-list-container">
-      <li class="todo-item-container">
-        <label class="checkmark-container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark circle-icon"></span>
-        </label>
-        <p>Read for 1 hour</p>
-      </li>
-      <li class="todo-item-container">
-        <label class="checkmark-container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark circle-icon"></span>
-        </label>
-        <p>Pick up groceries</p>
-      </li>
-    </ul>
+    <ul id="todo-list" class="todo-list-container"></ul>
+
     <div class="todo-list-footer-container">
-      <p id="itens-left">5 itens left</p>
-      <p id="clear">Clear Completed</p>
+      <p><span id="itens-left" >0</span> itens left</p>
+      <p id="clear-completed">Clear Completed</p>
     </div>
 
     <div class="filter-container">
@@ -59,6 +45,7 @@
   </div>
   
 
-
+<script src="./assets/js/script.js"></script>
+<script src="./assets/js/events.js"></script>
 </body>
 </html>

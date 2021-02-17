@@ -35,7 +35,6 @@ body {
 }
 
 .container {
-    height: 100vh;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -65,6 +64,13 @@ body {
     margin-top: 5px;
 }
 
+#new-todo-btn:hover {
+    background-color: hsl(234, 11%, 52%);
+}
+
+#new-todo-btn:active {
+    background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
 
 .circle-icon {
     background-color: transparent;
@@ -125,7 +131,7 @@ body {
 
 
 .checkmark-container:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: hsl(234, 11%, 52%);
 }
 
 .checkmark-container input:checked ~ .checkmark {
@@ -167,7 +173,7 @@ body {
     color: hsl(234, 11%, 52%)
 }
 
-#clear:hover {
+#clear-completed:hover {
     color: hsl(236, 33%, 92%)
 }
 
