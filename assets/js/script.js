@@ -44,16 +44,20 @@ function updateTodoList() {
     todoList.innerHTML = "";
     itensLeft.innerHTML = 0;
     
-
+    
     list.forEach(function(item) {
         item = item.split("-", 2);
         let lItem = createTodoItem(item);
         todoList.appendChild(lItem);
-        let lInput = lItem.firstChild.firstChild;
+        let lInput = lItem.firstChild.firstChild.firstChild;
+       
         checkItem(lInput);
+        
         updateCheckEvent();
+        
     });
     updateItensLeftList();
+    clearItem();
 }
 
 function createTodoItem(description) {
@@ -64,6 +68,9 @@ function createTodoItem(description) {
     listItem.ondragstart = drag;
     listItem.ondragover = dragOver;
     listItem.ondrop = drop;
+
+    let infoItem = document.createElement('div');
+    infoItem.className = 'todo-info-container'
 
     let itemLabel = document.createElement('label');
     itemLabel.className = 'checkmark-container';
@@ -81,11 +88,17 @@ function createTodoItem(description) {
     let itemDescription = document.createElement('p');
     itemDescription.innerHTML = description[0];
 
+    let buttonItem = document.createElement('button');
+    buttonItem.className = 'clear-btn';
+
     itemLabel.appendChild(itemInput);
     itemLabel.appendChild(itemSpan);
 
-    listItem.appendChild(itemLabel);
-    listItem.appendChild(itemDescription);
+    infoItem.appendChild(itemLabel);
+    infoItem.appendChild(itemDescription);
+
+    listItem.appendChild(infoItem);
+    listItem.appendChild(buttonItem);
 
     return listItem;
 }
@@ -132,12 +145,11 @@ function updateCheckEvent() {
 }
 
 function drag(ev) {
-    if(ev.target.firstChild.firstChild.checked) {
-        ev.dataTransfer.setData("text", ev.target.lastChild.innerHTML + "-checked");
+    if(ev.target.firstChild.firstChild.firstChild.checked) {
+        ev.dataTransfer.setData("text", ev.target.firstChild.lastChild.innerHTML + "-checked");
     } else {
-        ev.dataTransfer.setData("text", ev.target.lastChild.innerHTML);
+        ev.dataTransfer.setData("text", ev.target.firstChild.lastChild.innerHTML);
     }
-    
 }
 
 function dragOver(ev) {
@@ -146,20 +158,46 @@ function dragOver(ev) {
 
 function drop(ev) {
     ev.preventDefault();
+    let target = ev.target;
+    if(target.className !== "todo-item-container") {
+        target = ev.target.parentNode.parentNode
+    }
     let data = ev.dataTransfer.getData("text");
     let data2 = "";
-    if (ev.target.firstChild.firstChild.checked) {
-        data2 = ev.target.lastChild.innerHTML + "-checked";
+    if (target.firstChild.firstChild.firstChild.checked) {
+        data2 = target.firstChild.lastChild.innerHTML + "-checked";
     } else {
-        data2 = ev.target.lastChild.innerHTML;
+        data2 = target.firstChild.lastChild.innerHTML;
     }
-    console.log(data, data2);
-    console.log(list);
-    let oldData = list.indexOf(data);
-    let oldData2 = list.indexOf(data2)
-    console.log(oldData, oldData2);
-    list[oldData] = data2;
-    list[oldData2] = data;
-    console.log(list);
+
+    data = list.splice(list.indexOf(data),1);
+
+    list2 = list.splice(list.indexOf(data2), list.length - list.indexOf(data2));
+
+    list.push(data[0]);
+
+    list2.forEach((item) => {
+        list.push(item);
+    })
+
     updateTodoList();
+}
+
+function clearItem() {
+    let clearButton = document.querySelectorAll(".clear-btn");
+
+    clearButton.forEach((button) => {
+        button.addEventListener("click",(e) => {
+            let itemToDelete = e.target.parentNode.firstChild.lastChild.innerHTML;
+            if (e.target.parentNode.firstChild.firstChild.firstChild.checked) {
+                list.splice(list.indexOf(itemToDelete + "-checked"), 1);
+                localStorage.setItem('storageList', JSON.stringify(list));
+                updateTodoList();
+            } else {
+                list.splice(list.indexOf(itemToDelete), 1);
+                localStorage.setItem('storageList', JSON.stringify(list));
+                updateTodoList();
+            }
+        });
+    })
 }

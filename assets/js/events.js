@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     allFilter.addEventListener('click', () => {
         let inputs = document.querySelectorAll(".checkmark-input");
         inputs.forEach( (input) => {
-            let inputItem = input.parentNode.parentNode;
+            let inputItem = input.parentNode.parentNode.parentNode;
             inputItem.style.display = "flex";
             allFilter.className = "filter-select";
             activeFilter.className = "";
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeFilter.addEventListener('click', () => {
         let inputs = document.querySelectorAll(".checkmark-input");
         inputs.forEach( (input) => {
-            let inputItem = input.parentNode.parentNode;
+            let inputItem = input.parentNode.parentNode.parentNode;
             if (input.checked) {
                 inputItem.style.display = "none";
             } else {
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     completedFilter.addEventListener('click', () => {
         let inputs = document.querySelectorAll(".checkmark-input");
         inputs.forEach( (input) => {
-            let inputItem = input.parentNode.parentNode;
+            let inputItem = input.parentNode.parentNode.parentNode;
             if (!input.checked) {
                 inputItem.style.display = "none";
             } else {
@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
             completedFilter.className = "filter-select";
         });
     });
-
 });
 
 
