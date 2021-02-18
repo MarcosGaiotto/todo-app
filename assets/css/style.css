@@ -214,3 +214,22 @@ body {
 }
   
 
+@media(min-width:600px) {
+    .header-container {
+        align-items: flex-start;
+        justify-content: space-around;
+        padding: 60px 0;
+    }
+
+    .new-todo-container, .todo-list-container, .todo-list-footer-container, .filter-container {
+        width: 500px;
+       
+      
+    }
+}
+
+@media(min-width:900px) {
+    .header-container {
+        padding: 60px 20%;
+    }
+}

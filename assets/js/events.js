@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let inputs = document.querySelectorAll(".checkmark-input");
     inputs.forEach( (input) => {
         input.addEventListener("click", () => {
-            console.log("foi");
             checkItem(input);
             updateItensLeftList(input);
         });
