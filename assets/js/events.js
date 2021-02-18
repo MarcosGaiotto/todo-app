@@ -1,13 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    let inputs = document.querySelectorAll(".checkmark-input");
-    inputs.forEach( (input) => {
-        input.addEventListener("click", () => {
-            checkItem(input);
-            updateItensLeftList(input);
-        });
-    });
+    updateCheckEvent();
 
     let clearCompleted = document.getElementById('clear-completed');
 
@@ -16,7 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
         inputs.forEach((input) => {
             let desc = input.parentNode.parentNode.lastChild.innerHTML;
             if(input.checked) {
-                list.splice(list.indexOf(desc),1);
+                if(list.indexOf(desc) === -1) {
+                    list.splice(list.indexOf(desc + "-checked"),1); 
+                } else {
+                    list.splice(list.indexOf(desc),1);
+                }
                 localStorage.setItem('storageList', JSON.stringify(list));
                 updateTodoList();
             }
