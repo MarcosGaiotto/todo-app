@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     iconChanger.addEventListener('click', () => {
-        console.log("fui clicado")
         let listItemContainer = document.querySelectorAll(".todo-item-container");
         if(iconChanger.className === "icon sun") {
             iconChanger.className = "icon moon";

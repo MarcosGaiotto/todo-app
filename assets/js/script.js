@@ -162,7 +162,6 @@ function drag(ev) {
 function dragOver(ev) {
     ev.preventDefault();
     let newTodo = document.getElementById("new-todo-container");
-    console.log(newTodo);
     if (newTodo.className === "new-todo-container container-dark"){
         ev.target.style.background = "hsl(237, 14%, 26%)";
     } else {
@@ -197,7 +196,6 @@ function drop(ev) {
     }
 
     if(list.indexOf(data) < list.indexOf(data2)) {
-        console.log("AHA")
         data = list.splice(list.indexOf(data),1);
         list2 = list.splice(list.indexOf(data2), list.length - list.indexOf(data2));
         data2 = list2.splice(list2.indexOf(data2),1);
