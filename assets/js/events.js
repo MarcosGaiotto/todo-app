@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let todoFooter = document.getElementById("todo-footer");
     let todoFilter = document.getElementById("todo-filter");
     let newTodo = document.getElementById("new-todo");
+    let attribution = document.getElementById("attribution");
     
 
     iconChanger.addEventListener('click', () => {
@@ -91,8 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
             todoFilter.className = "filter-container container-light";
             newTodo.className = "container-light";
             listItemContainer.forEach((item) =>{
-                item.className = "todo-item-container container-light"
+                item.className = "todo-item-container container-light";
             });
+            attribution.className = "attribution attribution-light";
         } else {
             iconChanger.className = "icon sun";
             headerBackground.className = "header-container header-dark";
@@ -104,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listItemContainer.forEach((item) =>{
                 item.className = "todo-item-container container-dark"
             });
+            attribution.className = "attribution attribution-dark";
         }
     })
 });

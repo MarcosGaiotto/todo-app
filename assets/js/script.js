@@ -161,12 +161,23 @@ function drag(ev) {
 
 function dragOver(ev) {
     ev.preventDefault();
-    ev.target.style.background = "hsl(237, 14%, 26%)";
+    let newTodo = document.getElementById("new-todo-container");
+    console.log(newTodo);
+    if (newTodo.className === "new-todo-container container-dark"){
+        ev.target.style.background = "hsl(237, 14%, 26%)";
+    } else {
+        ev.target.style.background = "hsl(236, 33%, 92%)";
+    }
 }
-
+    
 function dragLeave(ev) {
     ev.preventDefault();
-    ev.target.style.background = "hsl(235, 24%, 19%)";
+    let newTodo = document.getElementById("new-todo-container");
+    if (newTodo.className === "new-todo-container container-dark"){
+        ev.target.style.background = "hsl(235, 24%, 19%)";
+    } else {
+        ev.target.style.background = "hsl(0, 0%, 98%)";
+    }
 }
 
 function drop(ev) {
