@@ -212,6 +212,8 @@ body {
 .checkmark {
     position: absolute;
     top: -2px;
+    left: 0;
+    margin-right: 0;
 }
 
 
@@ -246,7 +248,10 @@ body {
 
 .todo-item-container p {
     font-size: 1em;
+    -moz-margin-left: 20px;
+    
 }
+
 
 .todo-painel {
     width: 80%;
