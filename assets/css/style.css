@@ -193,8 +193,6 @@ body {
 
 }
 
-
-
 .checkmark-container {
     position: relative;
     height: 25px;
@@ -215,7 +213,6 @@ body {
     left: 0;
     margin-right: 0;
 }
-
 
 .checkmark-container:hover input ~ .checkmark {
     background-color: hsl(234, 11%, 52%);
@@ -248,8 +245,6 @@ body {
 
 .todo-item-container p {
     font-size: 1em;
-    -moz-margin-left: 20px;
-    
 }
 
 

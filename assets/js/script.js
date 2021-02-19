@@ -74,6 +74,7 @@ function createTodoItem(description) {
     listItem.ondragstart = drag;
     listItem.ondragover = dragOver;
     listItem.ondrop = drop;
+    listItem.ondragleave = dragLeave;
 
     let infoItem = document.createElement('div');
     infoItem.className = 'todo-info-container'
@@ -160,6 +161,12 @@ function drag(ev) {
 
 function dragOver(ev) {
     ev.preventDefault();
+    ev.target.style.background = "hsl(237, 14%, 26%)";
+}
+
+function dragLeave(ev) {
+    ev.preventDefault();
+    ev.target.style.background = "hsl(235, 24%, 19%)";
 }
 
 function drop(ev) {
@@ -178,16 +185,29 @@ function drop(ev) {
         data2 = target.firstChild.lastChild.innerHTML;
     }
 
-    data = list.splice(list.indexOf(data),1);
+    if(list.indexOf(data) < list.indexOf(data2)) {
+        console.log("AHA")
+        data = list.splice(list.indexOf(data),1);
+        list2 = list.splice(list.indexOf(data2), list.length - list.indexOf(data2));
+        data2 = list2.splice(list2.indexOf(data2),1);
+        list.push(data2[0]);
+        list.push(data[0]);
+        list2.forEach((item) => {
+            list.push(item);
+        })
+    } else {
+        data = list.splice(list.indexOf(data),1);
 
-    list2 = list.splice(list.indexOf(data2), list.length - list.indexOf(data2));
+        list2 = list.splice(list.indexOf(data2), list.length - list.indexOf(data2));
+    
 
-    list.push(data[0]);
+        list.push(data[0]);
 
-    list2.forEach((item) => {
-        list.push(item);
-    })
-
+        list2.forEach((item) => {
+            list.push(item);
+        })
+    }
+    localStorage.setItem('storageList', JSON.stringify(list));
     updateTodoList();
 }
 
