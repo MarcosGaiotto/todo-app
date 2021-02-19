@@ -69,6 +69,43 @@ document.addEventListener('DOMContentLoaded', () => {
             completedFilter.className = "filter-select";
         });
     });
+
+    let iconChanger= document.getElementById('icon-changer');
+    let headerBackground = document.getElementById("header-background");
+    let body = document.getElementById("body");
+    let newTodoContainer = document.getElementById("new-todo-container");
+    let todoFooter = document.getElementById("todo-footer");
+    let todoFilter = document.getElementById("todo-filter");
+    let newTodo = document.getElementById("new-todo");
+    
+
+    iconChanger.addEventListener('click', () => {
+        console.log("fui clicado")
+        let listItemContainer = document.querySelectorAll(".todo-item-container");
+        if(iconChanger.className === "icon sun") {
+            iconChanger.className = "icon moon";
+            headerBackground.className = "header-container header-light";
+            body.className = "body-light";
+            newTodoContainer.className = "new-todo-container container-light";
+            todoFooter.className = "todo-list-footer-container container-light";
+            todoFilter.className = "filter-container container-light";
+            newTodo.className = "container-light";
+            listItemContainer.forEach((item) =>{
+                item.className = "todo-item-container container-light"
+            });
+        } else {
+            iconChanger.className = "icon sun";
+            headerBackground.className = "header-container header-dark";
+            body.className = "body-dark";
+            newTodoContainer.className = "new-todo-container container-dark";
+            todoFooter.className = "todo-list-footer-container container-dark";
+            todoFilter.className = "filter-container container-dark";
+            newTodo.className = "container-dark";
+            listItemContainer.forEach((item) =>{
+                item.className = "todo-item-container container-dark"
+            });
+        }
+    })
 });
 
 

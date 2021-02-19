@@ -6,17 +6,34 @@
 }
 
 body {
+    transition: background 1s;
+}
+
+.body-dark {
     background: hsl(235, 21%, 11%);
 }
 
+.body-light {
+    background: hsl(236, 33%, 92%);
+}
+
 .header-container {
-    background: url(../images/bg-mobile-dark.jpg) no-repeat;
-    background-size: cover;
     height: 260px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     padding: 60px 40px;
+    transition: background 1s;
+}
+
+.header-dark {
+    background: url(../images/bg-mobile-dark.jpg) no-repeat;
+    background-size: cover;
+}
+
+.header-light {
+    background: url(../images/bg-mobile-light.jpg) no-repeat;
+    background-size: cover;
 }
 
 .header-container h1 {
@@ -34,6 +51,10 @@ body {
     background: url(../images/icon-sun.svg) no-repeat center;
 }
 
+.moon {
+    background: url(../images/icon-moon.svg) no-repeat center;
+}
+
 .container {
     width: 100%;
     margin: 0 auto;
@@ -44,10 +65,22 @@ body {
     top: 140px;
 }
 
+.container-dark {
+    background: hsl(235, 24%, 19%);
+    color: hsl(234, 39%, 85%);
+    transition: background 1s, color 1s;
+    
+}
+
+.container-light {
+    background: hsl(0, 0%, 98%);
+    color: hsl(235, 19%, 35%);
+    transition: background 1s, color 1s;
+}
+
 .new-todo-container {
     width: 80%;
     height: 60px;
-    background: hsl(235, 24%, 19%);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -56,10 +89,8 @@ body {
 }
 
 #new-todo {
-    background: hsl(235, 24%, 19%);
     border: none;
     outline: none;
-    color: hsl(234, 39%, 85%);
     font-size: 1em;
     margin-top: 5px;
 }
@@ -90,7 +121,6 @@ body {
 
 .todo-item-container, .todo-list-footer-container, .filter-container {
     height: 60px;
-    background: hsl(235, 24%, 19%);
     display: flex;
     align-items: center;
 }
@@ -99,9 +129,11 @@ body {
     width: 100%;
     justify-content: space-between;
     border-bottom: 1px solid hsl(234, 11%, 52%);
+    z-index: 10;
 }
 
 .todo-info-container {
+    width: 100%;
     height: 100%;
     padding-left: 20px;
     display: flex;
@@ -213,12 +245,16 @@ body {
 
 
 .todo-item-container p {
-    color: hsl(234, 39%, 85%);
     font-size: 1em;
 }
 
-.todo-list-footer-container {
+.todo-painel {
     width: 80%;
+    position: relative;
+}
+
+.todo-list-footer-container {
+    width: 100%;
     justify-content: space-between;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -232,7 +268,7 @@ body {
 
 .filter-container {
     margin-top: 25px;
-    width: 80%;
+    width: 100%;
     border-radius: 10px;
     color: hsl(234, 11%, 52%);
     font-weight: bold;
@@ -241,6 +277,10 @@ body {
 
 .filter-container p {
     margin-left: 20px;
+}
+
+.filter-container p:first-child {
+    margin-left: 0;
 }
 
 .filter-container p:hover {
@@ -253,13 +293,14 @@ body {
 
 .drag-drop-container {
     margin-top: 60px;
-    color: hsl(233, 14%, 35%);
+    color: hsl(234, 11%, 52%);
     font-weight: bold;
 }
 
 .attribution {
     margin-top: 60px;
-     font-size: 11px; text-align: center; 
+     font-size: 11px; text-align: center;
+     color: hsl(236, 33%, 92%);
 }
 
 .attribution a {
@@ -274,10 +315,24 @@ body {
         padding: 60px 0;
     }
 
-    .new-todo-container, .todo-list-container, .todo-list-footer-container, .filter-container {
+    .new-todo-container, .todo-list-container, .todo-painel {
         width: 500px;
-       
-      
+    }
+
+    .todo-painel{
+        font-size: .8em;
+    }
+
+    .filter-container {
+        width: 45%;
+        height: 90%;
+        position: absolute;
+        top: -22px;
+        left: 130px;
+    }
+
+    .drag-drop-container {
+        font-size: .8em;
     }
 }
 

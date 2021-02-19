@@ -63,7 +63,13 @@ function updateTodoList() {
 function createTodoItem(description) {
     
     let listItem = document.createElement('li');
-    listItem.className = 'todo-item-container';
+    let newTodo = document.getElementById("new-todo-container")
+    if(newTodo.className === "new-todo-container container-dark") {
+        listItem.className = 'todo-item-container container-dark';
+    } else {
+        listItem.className = 'todo-item-container container-light';
+    }
+    
     listItem.draggable = true;
     listItem.ondragstart = drag;
     listItem.ondragover = dragOver;
@@ -159,8 +165,10 @@ function dragOver(ev) {
 function drop(ev) {
     ev.preventDefault();
     let target = ev.target;
-    if(target.className !== "todo-item-container") {
-        target = ev.target.parentNode.parentNode
+    if(target.className !== "todo-info-container") {
+        target = ev.target.parentNode.parentNode;
+    } else {
+        target = ev.target.parentNode;
     }
     let data = ev.dataTransfer.getData("text");
     let data2 = "";

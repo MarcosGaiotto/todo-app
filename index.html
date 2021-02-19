@@ -9,31 +9,33 @@
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <title>Frontend Mentor | Todo app</title>
 </head>
-<body>
-  <header class="header-container">
+<body id="body" class="body-dark">
+  <header id="header-background" class="header-container header-dark">
     <h1>TODO</h1>
-    <div class="icon sun"></div>
+    <div id="icon-changer" class="icon sun"></div>
   </header>
   <div class="container">
-    <div class="new-todo-container">
+    <div id="new-todo-container" class="new-todo-container container-dark">
       <button id="new-todo-btn" class="circle-icon"></button>
       <label for="new-todo"></label>
-      <input type="text" id="new-todo" name="new-todo" placeholder="Create a new todo...">
+      <input type="text" id="new-todo" name="new-todo" class="container-dark" placeholder="Create a new todo...">
     </div>
 
     <ul id="todo-list" class="todo-list-container"></ul>
 
-    <div class="todo-list-footer-container">
-      <p><span id="itens-left" >0</span> itens left</p>
-      <p id="clear-completed">Clear Completed</p>
+    <div class="todo-painel">
+      <div id="todo-footer" class="todo-list-footer-container container-dark">
+        <p><span id="itens-left" >0</span> itens left</p>
+        <p id="clear-completed">Clear Completed</p>
+      </div>
+  
+      <div id="todo-filter" class="filter-container container-dark">
+        <p id="filter-all" class="filter-select">All</p>
+        <p id="filter-active">Active </p>
+        <p id="filter-completed">Completed</p>
+      </div>
     </div>
-
-    <div class="filter-container">
-      <p id="filter-all" class="filter-select">All</p>
-      <p id="filter-active">Active </p>
-      <p id="filter-completed">Completed</p>
-    </div>
-
+  
     <div class="drag-drop-container">
       <p>Drag and drop to reorder list</p>
     </div>
